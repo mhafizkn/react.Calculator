@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import Wrapper from './components/Wrapper';
+import Screen from './components/Screen';
+import ButtonBox from './components/ButtonBox';
+import Button from './components/Button';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+const App = () => {
+  return(
+    <Wrapper>
+      <Screen value="0" />
+      <ButtonBox>
+        <Button
+          classname="" value="0" onClick={() => {
+            console.log('Button Clicked!');
+          }} 
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+        </Button>
+      </ButtonBox>
+    </Wrapper>
   );
 }
 

@@ -1,0 +1,13 @@
+.temporary {
+    height: 50px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    border-radius: 5px;
+    align-items: center;
+    display: flex;
+    background-color: #3c3c3c;
+    color: #616161;
+    justify-content: flex-end;
+    box-sizing: border-box;
+}

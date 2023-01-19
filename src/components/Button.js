@@ -1,8 +1,9 @@
 import "./Button.css";
+import "../fonts/Kanit-MediumItalic.ttf";
 
-const Button = ({ classname, value, onClick }) => {
+const Button = ({ className, value, onClick }) => {
     return(
-        <button classname={classname} onClick={onClick}>
+        <button className={className} onClick={onClick}>
             {value}
         </button>
     );

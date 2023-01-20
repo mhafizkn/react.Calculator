@@ -8,7 +8,7 @@ import Button from './components/Button';
 
 const btnValue = [
   ["C", "+-", "%", "/"],
-  [7, 8, 9, "X"],
+  [7, 8, 9, "x"],
   [4, 5, 6, "-"],
   [1, 2, 3, "+"],
   [0, ".", "="],
@@ -19,8 +19,12 @@ const toLocaleString = (num) =>
 
 const removeSpaces = (num) => num.toString().replace(/\s/g, "");
 
+const equation = [];
+
 const App = () => {
-  let [calc, setCalc] = useState ({
+  console.log(equation);
+
+  let [calc, setCalcArray] = useState ({
     sign: "",
     num: 0,
     res: 0,
@@ -31,7 +35,7 @@ const App = () => {
     const value = e.target.innerHTML;
 
     if (removeSpaces(calc.num).length < 16) {
-      setCalc({
+      setCalcArray({
         ...calc,
         num:
           calc.num === 0 && value === "0"
@@ -41,6 +45,8 @@ const App = () => {
             : toLocaleString(calc.num + value),
         res: !calc.sign ? 0 : calc.res,
       });
+
+      equation.push(value);
     }
   };
 
@@ -48,7 +54,7 @@ const App = () => {
     e.preventDefault();
     const value = e.target.innerHTML;
   
-    setCalc({
+    setCalcArray({
       ...calc,
       num: !calc.num.toString().includes(".") ? calc.num + value : calc.num,
     });
@@ -58,12 +64,14 @@ const App = () => {
     e.preventDefault();
     const value = e.target.innerHTML;
   
-    setCalc({
+    setCalcArray({
       ...calc,
       sign: value,
       res: !calc.res && calc.num ? calc.num : calc.res,
       num: 0,
     });
+
+    equation.push(value);
   };
 
   const equalsClickHandler = () => {
@@ -73,11 +81,11 @@ const App = () => {
           ? a + b
           : sign === "-"
           ? a - b
-          : sign === "X"
+          : sign === "x"
           ? a * b
           : a / b;
   
-      setCalc({
+      setCalcArray({
         ...calc,
         res:
           calc.num === "0" && calc.sign === "/"
@@ -90,7 +98,7 @@ const App = () => {
   };
 
   const invertClickHandler = () => {
-    setCalc({
+    setCalcArray({
       ...calc,
       num: calc.num ? toLocaleString(removeSpaces(calc.num) * -1) : 0,
       res: calc.res ? toLocaleString(removeSpaces(calc.res) * -1) : 0,
@@ -102,7 +110,7 @@ const App = () => {
     let num = calc.num ? parseFloat(removeSpaces(calc.num)) : 0;
     let res = calc.res ? parseFloat(removeSpaces(calc.res)) : 0;
   
-    setCalc({
+    setCalcArray({
       ...calc,
       num: (num /= Math.pow(100, 1)),
       res: (res /= Math.pow(100, 1)),
@@ -111,17 +119,18 @@ const App = () => {
   };
 
   const resetClickHandler = () => {
-    setCalc({
+    setCalcArray({
       ...calc,
       sign: "",
       num: 0,
       res: 0,
+      equ: [],
     });
   };
 
   return(
     <Wrapper>
-      <Equation />
+      <Equation equation={equation} />
       <Screen value={calc.num ? calc.num : calc.res} />
       <ButtonBox>
       {

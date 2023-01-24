@@ -6,9 +6,9 @@
 
 button {
     border: none;
-    background-color: rgb(80, 60, 209);
+    background-color: rgb(240, 240, 240);
     font-size: 24px;
-    color: rgb(255, 255, 255);
+    color: rgb(60, 60, 60);
     font-weight: bold;
     cursor: pointer;
     border-radius: 10px;
@@ -17,14 +17,33 @@ button {
   }
   
   button:hover {
-    background-color: rgb(61, 43, 184);
+    background-color: rgb(180, 180, 180);
   }
   
   .equals {
     grid-column: 3 / 5;
-    background-color: rgb(243, 61, 29);
+    color: rgb(255,255,225);
+    background-color: rgb(255, 165, 0);
   }
   
   .equals:hover {
-    background-color: rgb(228, 39, 15);
+    background-color: rgb(240, 156, 0);
+  }
+
+  .reset {
+    color: rgb(250, 250, 250);
+    background-color: rgb(243, 61, 29);
+  }
+
+  .reset:hover {
+    background-color: rgb(220, 39, 15);
+  }
+
+  .operation {
+    color: rgb(250, 250, 250);
+    background-color: rgb(0, 4, 255);
+  }
+
+  .operation:hover {
+    background-color: rgb(10, 4, 220);
   }

@@ -8,7 +8,7 @@ import Button from './components/Button';
 
 const btnValue = [
   ["C", "+-", "%", "/"],
-  [7, 8, 9, "x"],
+  [7, 8, 9, "X"],
   [4, 5, 6, "-"],
   [1, 2, 3, "+"],
   [0, ".", "="],
@@ -81,7 +81,7 @@ const App = () => {
           ? a + b
           : sign === "-"
           ? a - b
-          : sign === "x"
+          : sign === "X"
           ? a * b
           : a / b;
   
@@ -138,7 +138,16 @@ const App = () => {
           return(
             <Button
               key={i}
-              className={btn === "=" ? "equals" : ""}
+              className={
+                // btn === "=" ? "equals" : ""
+                btn === "=" 
+                  ? "equals" 
+                  : btn === "C"
+                  ? "reset"
+                  : btn === "/" || btn === "X" || btn === "-" || btn === "+"
+                  ? "operation"
+                  : ""
+              }
               value={btn} 
               onClick={
                 btn === "C" 
